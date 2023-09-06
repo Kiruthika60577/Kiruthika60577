@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 from surprise import Dataset, Reader, KNNBasic
 from surprise.model_selection import train_test_split
-from surprise import accuracy
 
 # Set a background image for the Streamlit app (replace with your own image URL)
 st.markdown(
@@ -17,9 +16,9 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Load the preprocessed data (replace with your data file paths)
-movies_df = pd.read_csv('movies.csv')
-ratings_df = pd.read_csv('ratings.csv')
+# Load data from GitHub (replace with the raw GitHub URLs)
+movies_url = 'https://raw.githubusercontent.com/yourusername/yourrepository/main/movies.csv'
+ratings_url = 'https://raw.githubusercontent.com/yourusername/yourrepository/main/ratings.csv'
 
 # Function to get top movie recommendations for a user
 def get_top_n(predictions, user_id, n=10):
@@ -33,30 +32,18 @@ def get_top_n(predictions, user_id, n=10):
 # Streamlit App Header
 st.title('Wbsflix Movie Recommendation App')
 
+# Load and display movies data
+movies_df = pd.read_csv(movies_url)
+st.subheader('Movies Data:')
+st.write(movies_df)
+
+# Load and display ratings data
+ratings_df = pd.read_csv(ratings_url)
+st.subheader('Ratings Data:')
+st.write(ratings_df)
+
 # Sidebar for user input
 user_id = st.sidebar.text_input('Enter User ID', '1')
-
-# Filter movies by genre
-genre = st.sidebar.selectbox('Select a Genre', movies_df['genres'].unique())
-filtered_movies = movies_df[movies_df['genres'].str.contains(genre)]
-
-# Display filtered movies and their ratings
-st.subheader(f'Movies in the "{genre}" Genre:')
-for index, row in filtered_movies.iterrows():
-    st.write(f"**{row['title']}** (Genres: {row['genres']})")
-
-    # Get the average rating for this movie
-    movie_ratings = ratings_df[ratings_df['movieId'] == row['movieId']]['rating']
-    average_rating = movie_ratings.mean()
-    
-    # Display the movie poster if a valid URL is available
-    poster_url = row['poster_url']  # Replace with the actual column name containing poster URLs
-    if poster_url and isinstance(poster_url, str) and poster_url.startswith(('http://', 'https://')):
-        st.image(poster_url, caption=row['title'], use_column_width=True)
-    else:
-        st.write("No poster available")
-    
-    st.write(f"Average Rating: {average_rating:.2f}")
 
 # Load the recommendation model and make predictions
 reader = Reader(rating_scale=(1, 5))
@@ -73,12 +60,4 @@ st.subheader('Top Movie Recommendations:')
 for i, (movie_id, estimated_rating) in enumerate(top_n, start=1):
     movie_info = movies_df[movies_df['movieId'] == movie_id]
     title = movie_info['title'].values[0]
-    genres = movie_info['genres'].values[0]
-    poster_url = movie_info['poster_url'].values[0]  # Replace with the actual column name containing poster URLs
-    st.write(f"{i}. **{title}** (Genres: {genres}), Estimated Rating: {estimated_rating:.2f}")
-    
-    # Display the movie poster if a valid URL is available
-    if poster_url and isinstance(poster_url, str) and poster_url.startswith(('http://', 'https://')):
-        st.image(poster_url, caption=title, use_column_width=True)
-    else:
-        st.write("No poster available")
+    st.write(f"{i}. **{title}**, Estimated Rating: {estimated_rating:.2f}")
