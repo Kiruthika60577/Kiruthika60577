@@ -1,4 +1,16 @@
-
+import pandas as pd
+url = 'https://drive.google.com/file/d/1fQ4E2q3LKng0ShMswV8kExZJtzfabn-P/view?usp=sharing' # movies.csv
+path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
+movies_df = pd.read_csv(path)
+url = 'https://drive.google.com/file/d/1cOW6sRWehqhw8936fFFuSgvkVxVlgyyh/view?usp=sharing' # ratings.csv
+path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
+ratings_df = pd.read_csv(path)
+url = 'https://drive.google.com/file/d/1aEracXXZf9HG5U-o_Mw3KX8aaFveiVvR/view?usp=sharing' # links.csv
+path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
+links_df = pd.read_csv(path)
+url = 'https://drive.google.com/file/d/1Fc9sf1t5yOR6rgtn-2-EMT5YKw5mReVI/view?usp=sharing' # tags.csv
+path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
+tags_df = pd.read_csv(path)
 import streamlit as st
 import pandas as pd
 
