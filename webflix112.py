@@ -5,6 +5,19 @@ from surprise.model_selection import train_test_split
 from surprise import accuracy
 from surprise.model_selection import cross_validate
 
+# Set a background image for the Streamlit app
+st.markdown(
+    """
+    <style>
+    body {
+        background-image: url("https://yourdomain.com/assets/netflix_bg.jpg");  /* Replace with the actual URL of your image */
+        background-size: cover;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # Load the preprocessed data
 movies_df = pd.read_csv('movies.csv')
 ratings_df = pd.read_csv('ratings.csv')
@@ -24,6 +37,25 @@ st.title('Wbsflix Movie Recommendation App')
 # Sidebar for user input
 user_id = st.sidebar.text_input('Enter User ID', '1')
 
+# Filter movies by genre
+genre = st.sidebar.selectbox('Select a Genre', movies_df['genres'].unique())
+filtered_movies = movies_df[movies_df['genres'].str.contains(genre)]
+
+# Display filtered movies and their ratings
+st.subheader(f'Movies in the "{genre}" Genre:')
+for index, row in filtered_movies.iterrows():
+    st.write(f"**{row['title']}** (Genres: {row['genres']})")
+
+    # Get the average rating for this movie
+    movie_ratings = ratings_df[ratings_df['movieId'] == row['movieId']]['rating']
+    average_rating = movie_ratings.mean()
+    
+    # Display the movie poster
+    poster_url = row['poster_url']  # Replace with the actual column name containing poster URLs
+    st.image(poster_url, caption=row['title'], use_column_width=True)
+    
+    st.write(f"Average Rating: {average_rating:.2f}")
+
 # Load the recommendation model and make predictions
 reader = Reader(rating_scale=(1, 5))
 data = Dataset.load_from_df(ratings_df[['userId', 'movieId', 'rating']], reader)
@@ -40,5 +72,6 @@ for i, (movie_id, estimated_rating) in enumerate(top_n, start=1):
     movie_info = movies_df[movies_df['movieId'] == movie_id]
     title = movie_info['title'].values[0]
     genres = movie_info['genres'].values[0]
+    poster_url = movie_info['poster_url'].values[0]  # Replace with the actual column name containing poster URLs
     st.write(f"{i}. **{title}** (Genres: {genres}), Estimated Rating: {estimated_rating:.2f}")
-
+    st.image(poster_url, caption=title, use_column_width=True)
