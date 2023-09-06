@@ -21,8 +21,15 @@ movies_df = pd.read_csv(movies_url)
 ratings_url = 'https://raw.githubusercontent.com/Kiruthika60577/Kiruthika60577/main/ratings.csv'
 ratings_df = pd.read_csv(ratings_url)
 
-# Merge movies_df and ratings_df based on 'MovieId'
-merged_df = movies_df.merge(ratings_df, on='MovieId', how='inner')
+# Check column names in both DataFrames
+st.write("Movies DataFrame Columns:", movies_df.columns)
+st.write("Ratings DataFrame Columns:", ratings_df.columns)
+
+# Identify the correct common column for merging (replace 'CommonColumn' with the actual common column name)
+common_column = 'CommonColumn'  # Replace with the correct column name
+
+# Merge movies_df and ratings_df based on the common column
+merged_df = movies_df.merge(ratings_df, on=common_column, how='inner')
 
 # Display recommended movies based on genre
 if genre:
