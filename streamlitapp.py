@@ -32,7 +32,7 @@ tags_df = pd.read_csv(tags_url)
 # Display recommended movies based on genre
 if genre:
     genre = genre.lower()
-    recommended_movies = movies_df[movies_df['Genre'].str.lower().str.contains(genre)]
+    recommended_movies = movies_df[movies_df['genres'].str.lower().str.contains(genre)]
     
     if not recommended_movies.empty:
         st.subheader(f"Recommended {genre.capitalize()} Movies")
