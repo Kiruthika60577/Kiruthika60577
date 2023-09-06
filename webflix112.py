@@ -393,15 +393,4 @@ tuples_df_expanded
 
 df
 
-!pip install streamlit
 
-!pip install pyngrok
-
-# Commented out IPython magic to ensure Python compatibility.
-# %%writefile app.py
-# import streamlit as st
-# st.title ("Hello world")
-
-!ngrok authtoken 2V10WGcnf27zfJnzJZOTi6bTENJ_2E9wYNuuTxHmksAqD51ua
-
-!streamlit run app.py & npx localtunnel --port 8501
