@@ -139,8 +139,6 @@ most_rated_movieId = df['movieId'].value_counts().idxmax()
 most_rated_movie_title = df[df['movieId'] == most_rated_movieId]['title'].values[0]
 print("Most Rated Movie:", most_rated_movie_title)
 
-pip install matplotlib
-
 import pandas as pd
 import matplotlib.pyplot as plt
 
