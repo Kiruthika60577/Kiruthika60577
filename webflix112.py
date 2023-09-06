@@ -274,7 +274,7 @@ plt.show()
 
 """# **User based recommender**"""
 
-!pip install scikit-surprise
+
 
 from surprise import Dataset, Reader, KNNBasic
 from surprise.model_selection import train_test_split
