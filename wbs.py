@@ -2,15 +2,14 @@ import streamlit as st
 import pandas as pd
 from surprise import Dataset, Reader, KNNBasic
 from surprise.model_selection import train_test_split
-pip install streamlit pandas scikit-surprise
+from surprise import accuracy
 
-
-# Set a background image for the Streamlit app
+# Set a background image for the Streamlit app (replace with your own image URL)
 st.markdown(
     """
     <style>
     body {
-        background-image: url("https://yourdomain.com/assets/netflix_bg.jpg");  /* Replace with the actual URL of your image */
+        background-image: url("https://yourdomain.com/assets/netflix_bg.jpg");  # Replace with your image URL
         background-size: cover;
     }
     </style>
@@ -18,7 +17,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Load the preprocessed data
+# Load the preprocessed data (replace with your data file paths)
 movies_df = pd.read_csv('movies.csv')
 ratings_df = pd.read_csv('ratings.csv')
 
