@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from surprise import Dataset, Reader, KNNBasic
 from surprise.model_selection import train_test_split
+pip install scikit-surprise
 
 # Set a background image for the Streamlit app
 st.markdown(
