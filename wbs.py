@@ -4,8 +4,8 @@ from surprise import Dataset, Reader, KNNBasic
 from surprise.model_selection import train_test_split
 
 # Load data from GitHub (replace with your GitHub URLs)
-movies_url = 'https://raw.githubusercontent.com/kiruthika60577/wbs.py/main/movies.csv'
-ratings_url = 'https://raw.githubusercontent.com/kiruthika60577/wbs.py/main/ratings.csv'
+movies_url = 'https://raw.githubusercontent.com/Kiruthika60577/Kiruthika60577wbs.py/main/movies.csv'
+ratings_url = 'https://raw.githubusercontent.com/Kiruthika60577/Kiruthika60577wbs.py/main/ratings.csv'
 
 # Load and preprocess data
 movies_df = pd.read_csv(movies_url)
