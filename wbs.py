@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
-from surprise import Dataset, Reader, KNNBasic
-from surprise.model_selection import train_test_split
+
 
 # Upload your data files to your Streamlit app (e.g., using the "Upload File" widget)
 uploaded_movies = st.file_uploader("Upload movies.csv", type=["csv"])
