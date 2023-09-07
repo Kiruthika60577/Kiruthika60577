@@ -24,6 +24,11 @@ if uploaded_movies and uploaded_ratings:
         filtered_movies = movies_df[movies_df['genres'].str.contains(selected_genre)]
 
         # ... (Rest of the code for recommendations remains the same as in the previous response)
+
+        # Display recommended movies with ratings
+        st.subheader('Recommended Movies with Ratings:')
+        for i, (title, estimated_rating) in enumerate(movie_recommendations[:10], start=1):
+            st.write(f"{i}. **{title}** (Estimated Rating: {estimated_rating:.2f})")
         
 else:
     st.write("Please upload your data files.")
