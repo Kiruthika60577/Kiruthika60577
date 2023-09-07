@@ -17,8 +17,8 @@ st.markdown(
 )
 
 # Load data from GitHub (replace with the raw GitHub URLs)
-movies_url = 'https://raw.githubusercontent.com/yourusername/yourrepository/main/movies.csv'
-ratings_url = 'https://raw.githubusercontent.com/yourusername/yourrepository/main/ratings.csv'
+movies_url = 'https://raw.githubusercontent.com/kiruthika60577/kiruthika60577/wbs.py/main/movies.csv'
+ratings_url = 'https://raw.githubusercontent.com/kiruthika60577/kiruthika60577/wbs.py/main/ratings.csv'
 
 # Function to get top movie recommendations for a user
 def get_top_n(predictions, user_id, n=10):
