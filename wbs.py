@@ -24,8 +24,7 @@ if uploaded_movies and uploaded_ratings:
         filtered_movies = movies_df[movies_df['genres'].str.contains(selected_genre)]
 
         # Load the recommendation model
-        reader = Reader(rating_scale=(1, 5))
-        data = Dataset.load_from_df(ratings_df[['userId', 'movieId', 'rating']], reader)
+        data = Dataset.load_builtin('ml-100k')  # You can use the built-in MovieLens dataset
         trainset, _ = train_test_split(data, test_size=0.2, random_state=42)
         algo = KNNBasic(sim_options={'name': 'cosine', 'user_based': True})
         algo.fit(trainset)
