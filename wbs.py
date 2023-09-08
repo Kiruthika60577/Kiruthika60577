@@ -3,33 +3,37 @@ import pandas as pd
 
 # Streamlit App Header
 st.title('Wbsflix')
-
-# Create a container for the content with custom CSS
-st.markdown(
-    """
+<!DOCTYPE html>
+<html>
+<head>
     <style>
-        .container {
-            background-color: #141414; /* Netflix background color */
+        body {
+            background-image: url('background.jpg'); /* Replace 'background.jpg' with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .content {
+            background-color: rgba(0, 0, 0, 0.7); /* Dark background overlay */
             color: white;
             padding: 20px;
             border-radius: 10px;
+            margin: 20px;
         }
     </style>
-    """,
-    unsafe_allow_html=True,
-)
-
-# Create a content container
-st.markdown(
-    """
-    <div class="container">
-        <!-- Add your content here -->
-        <h2>Welcome to Wbsflix</h2>
+</head>
+<body>
+    <div class="content">
+        <h1>Welcome to Wbsflix</h1>
         <p>Discover and watch your favorite movies and TV shows.</p>
     </div>
-    """,
-    unsafe_allow_html=True,
-)
+    <iframe src="http://localhost:8501" style="width: 100%; height: 100%; border: none;"></iframe>
+</body>
+</html>
+
 
 # GitHub repository URL
 github_repo_url = 'https://raw.githubusercontent.com/Kiruthika60577/Kiruthika60577/main/'
