@@ -4,11 +4,14 @@ import pandas as pd
 # Streamlit App Header
 st.title('Wbsflix')
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wbsflix</title>
     <style>
         body {
-            background-image: url('background.jpg'); /* Replace 'background.jpg' with your image URL */
+            background-image: url('background.jpg'); /* Replace with your image path */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -16,23 +19,20 @@ st.title('Wbsflix')
             padding: 0;
             font-family: Arial, sans-serif;
         }
-        .content {
-            background-color: rgba(0, 0, 0, 0.7); /* Dark background overlay */
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px;
+        .streamlit-embed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
 <body>
-    <div class="content">
-        <h1>Welcome to Wbsflix</h1>
-        <p>Discover and watch your favorite movies and TV shows.</p>
-    </div>
-    <iframe src="http://localhost:8501" style="width: 100%; height: 100%; border: none;"></iframe>
+    <iframe class="streamlit-embed" src="http://localhost:8501" frameborder="0"></iframe>
 </body>
 </html>
+
 
 
 # GitHub repository URL
