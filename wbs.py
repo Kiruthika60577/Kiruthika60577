@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
-
+from surprise import Dataset, Reader
+from surprise.model_selection import train_test_split
+from surprise.prediction_algorithms import KNNBasic
 
 # URLs of your CSV files on GitHub
 movies_url = 'https://raw.githubusercontent.com/Kiruthika60577/Kiruthika60577/main/movies.csv'
@@ -45,4 +47,4 @@ if st.sidebar.button('Get Recommendations'):
     # Display recommended movies with ratings
     st.subheader('Recommended Movies with Ratings:')
     for i, (title, estimated_rating) in enumerate(movie_recommendations[:10], start=1):
-        st.write(f"{i}. **{title}** (Estimated Rating: {estimated_rating:.2f}")
+        st.write(f"{i}. **{title}** (Estimated Rating: {estimated_rating:.2f})")
