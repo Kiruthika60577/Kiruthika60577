@@ -3,21 +3,35 @@ import streamlit as st
 # Streamlit App Header
 st.title('Wbsflix')
 
-# Define the URL of your background image
-background_image_url = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.slashgear.com%2Fnetflix-4k-streaming-on-macos-big-sur-to-require-a-t2-security-chip-02640845%2F&psig=AOvVaw0Zg5pd4ZMy4kUBAo3njC4R&ust=1694242050286000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCIjdhs-1moEDFQAAAAAdAAAAABAE'
-
-# Create a custom CSS style to set the background image
-background_style = f"""
+# Create a container for the content with custom CSS
+st.markdown(
+    """
     <style>
-        body {{
-            background-image: url('{background_image_url}');
-            background-size: cover;
-        }}
+        .container {
+            background-color: #141414; /* Netflix background color */
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
     </style>
-"""
+    """,
+    unsafe_allow_html=True,
+)
 
-# Apply the custom CSS style
-st.markdown(background_style, unsafe_allow_html=True)
+# Create a content container
+st.markdown(
+    """
+    <div class="container">
+        <!-- Add your content here -->
+        <h2>Welcome to Wbsflix</h2>
+        <p>Discover and watch your favorite movies and TV shows.</p>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
+# The rest of your Streamlit app code...
+
 
 import streamlit as st
 import pandas as pd
